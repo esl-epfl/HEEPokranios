@@ -1,0 +1,32 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: VCO.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:vco:0.1.0
+description: VCO model
+
+filesets:
+    rtl:
+        depend:
+        - epfl:cheep:analog_defs
+        files:
+        - include/vco_pkg.sv
+        - Verilog/VCO_wrapper.sv
+        file_type: systemVerilogSource
+
+    verilator-waivers:
+        files:
+        - waivers/VCO.vlt
+        file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)
+

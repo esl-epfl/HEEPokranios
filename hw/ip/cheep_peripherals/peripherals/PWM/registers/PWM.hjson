@@ -1,0 +1,44 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: PWM.hjson
+// Author: Juan Sapriza
+
+{
+    name: "PWM"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "L_cc"
+        desc:     "Duration of the Low state, in input-clock cycles"
+        swaccess: "rw"
+        hwaccess: "hrw"
+        fields: [
+            { bits: "15:0"
+              name: "L_cc"
+              desc: "Duration of the Low state, in input-clock cycles"
+               }
+           ]
+        }
+        { name:   "H_cc"
+        desc:     "Duration of the High state, in input-clock cycles"
+        swaccess: "rw"
+        hwaccess: "hrw"
+        fields: [
+            { bits: "15:0"
+              name: "H_cc"
+              desc: "Duration of the High state, in input-clock cycles"
+               }
+           ]
+        }
+
+        ]
+}

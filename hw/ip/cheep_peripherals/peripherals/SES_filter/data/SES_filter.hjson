@@ -1,0 +1,111 @@
+// Copyright 2025 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: SES_filter.hjson
+// Author: Jérémie Moullet
+// Description: HEEPidermis SES filter registers
+
+{
+    name: "SES_filter"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "ses_control"
+        desc:     "control register of the SES filter"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "0:0" }
+        ]
+        }
+
+        { name:   "ses_status"
+        desc:     "status register of the SES filter"
+        swaccess: "ro"
+        hwaccess: "hwo"
+        fields: [
+            { bits: "1:0" }
+        ]
+        }
+
+        { name:   "ses_sysclk_division"
+        desc:     "Decimation factor from the system clock to the SES filter clock"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "6:0" }
+        ]
+        }
+
+        //The maximum number of stage correspond to the size of the following bitfield.
+        { name:   "ses_activated_stages"
+        desc:     "Thermometric value of the activated stages (The 1s should be contiguous and right-aligned)"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "9:0" }
+        ]
+        }
+
+        { name:   "data_out"
+        desc:     "The full output word"
+        swaccess: "ro"
+        hwaccess: "hrw"
+        fields: [
+            { bits: "23:0" }
+        ]
+        }
+
+        {
+        multireg: {
+            name: "ses_gain_stage"
+            desc: "Input gain Wg for each SES stage"
+            count: "10"
+            cname: "stage"
+            swaccess: "rw"
+            hwaccess: "hro"
+            compact: false
+            fields: [
+            { bits: "4:0", name: "gain", desc: "Wg for this SES stage" }
+            ]
+        }
+        }
+        {
+        multireg: {
+            name: "ses_window_stage"
+            desc: "Input window size Ww for each SES stage"
+            count: "10"
+            cname: "stage"
+            swaccess: "rw"
+            hwaccess: "hro"
+            compact: false
+            fields: [
+            { bits: "2:0", name: "window", desc: "Wg for this SES stage" }
+            ]
+        }
+        }
+        {
+        multireg: {
+            name: "ses_decimation_factor_stage"
+            desc: "Decimation factor at the output of each SES stage. Log2 of decimation wrt clk. Eg. a value of 2 will divide by 4."
+            count: "11"
+            cname: "stage"
+            swaccess: "rw"
+            hwaccess: "hro"
+            compact: false
+            fields: [
+            { bits: "2:0", name: "decimation_factor", desc: "Decimation factor for this SES stage" }
+            ]
+        }
+        }
+
+   ]
+}

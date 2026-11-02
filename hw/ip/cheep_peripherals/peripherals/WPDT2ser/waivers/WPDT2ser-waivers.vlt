@@ -1,0 +1,16 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: WPDT2ser-waivers.sv
+// Author:Juan Sapriza
+// Description: Verilator waivers for WPDT2ser
+
+`verilator_config
+// Automatically generated control registers
+lint_off -rule DECLFILENAME -file "*/WPDT2ser/rtl/wpdt2ser_reg_top.sv" -match "Filename 'wpdt2ser_reg_top' does not match MODULE name: 'wpdt2ser_reg_top_intf'"
+lint_off -rule UNUSED -file "*/WPDT2ser/rtl/wpdt2ser_reg_top.sv" -match "Parameter is not used: 'AW'"
+
+lint_off -rule WIDTH -file "*/WPDT2ser/rtl/wpdt2ser_reg_top.sv" -match "Operator ASSIGNW expects * bits on the Assign RHS, but Assign RHS's SEL generates * bits."
+lint_off -rule WIDTH -file "*/WPDT2ser/rtl/wpdt2ser_reg_top.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'reg_rdata' generates 8 bits."
+lint_off -rule WIDTH -file "*/WPDT2ser/rtl/wpdt2ser_reg_top.sv" -match "Operator NOT expects 4 bits on the LHS, but LHS's VARREF 'reg_be' generates 1 bits."

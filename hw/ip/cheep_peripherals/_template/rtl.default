@@ -1,0 +1,50 @@
+// Copyright ${year} EPFL.
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: ${peripheral_name}.sv
+// Author: ${author}
+
+module ${peripheral_name} #(
+) (
+
+    input logic clk_i,
+    input logic rst_ni,
+
+    input  reg_pkg::reg_req_t req_i,
+    output reg_pkg::reg_rsp_t rsp_o
+);
+
+  /* verilator lint_off UNUSED */
+  /* verilator lint_off UNDRIVEN */
+  ${peripheral_name.lower()}_reg_pkg::${peripheral_name.lower()}_hw2reg_t        hw2reg;
+  ${peripheral_name.lower()}_reg_pkg::${peripheral_name.lower()}_reg2hw_t        reg2hw;
+  /* verilator lint_on UNDRIVEN */
+  /* verilator lint_on UNUSED */
+
+  // ${peripheral_name} registers
+  ${peripheral_name.lower()}_reg_top #(
+      .reg_req_t(reg_pkg::reg_req_t),
+      .reg_rsp_t(reg_pkg::reg_rsp_t)
+  ) u_${peripheral_name.lower()}_reg_top (
+      .clk_i    (clk_i),
+      .rst_ni   (rst_ni),
+      .reg_req_i(req_i),
+      .reg_rsp_o(rsp_o),
+      .reg2hw   (reg2hw),
+      .hw2reg   (hw2reg),
+      .devmode_i(1'b0)
+  );
+
+  /* verilator lint_off UNUSED */
+  /* verilator lint_off UNDRIVEN */
+  logic example_read;
+  logic example_write;
+  assign example_read   = reg2hw.example;
+  assign hw2reg.example.d = example_write;
+  assign hw2reg.example.de = '1;
+  /* verilator lint_on UNDRIVEN */
+  /* verilator lint_on UNUSED */
+
+
+endmodule

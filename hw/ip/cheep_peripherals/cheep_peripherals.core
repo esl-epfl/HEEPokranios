@@ -1,0 +1,97 @@
+CAPI=2:
+
+# Copyright 2022 EPFL and Politecnico di Torino.
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: cheep_peripherals.core
+# Author: Michele Caon, Luigi Giuffrida
+# Date: 29/04/2024
+# Description: cheep external cheep_peripherals
+
+name: epfl:cheep:cheep_peripherals:0.1.0
+description: cheep external cheep_peripherals
+
+filesets:
+  # RTL source files
+  rtl:
+    depend:
+    - epfl:cheep:packages
+    - epfl:cheep:pgm_clock_divider
+    - epfl:cheep:channel_multipath
+    - epfl:cheep:pwm
+    - epfl:cheep:counter_trigger
+    - epfl:cheep:VCO_counter
+    - epfl:cheep:wpdt
+    - epfl:cheep:wpdt2ser
+    - epfl:cheep:circular_buffer
+    - epfl:cheep:reg2ser
+    - epfl:cheep:idac_ctrl
+    - epfl:cheep:idac
+    - epfl:cheep:iref
+    - epfl:cheep:vref
+    - epfl:cheep:refs_ctrl
+    - epfl:cheep:imirror
+    files:
+    - rtl/cheep_peripherals_reg_pkg.sv
+    - rtl/cheep_peripherals_reg_top.sv
+    - rtl/cheep_peripherals.sv
+    file_type: systemVerilogSource
+
+  # RTL simulation models
+  rtl-sim:
+    depend:
+    - pulp-platform.org::tech_cells_generic
+    files:
+    - ../../simulation/sim_clock_gate.sv
+    file_type: systemVerilogSource
+
+  # Verilator waiver file
+  verilator-waivers:
+    files:
+    - waivers/cheep_peripherals-waivers.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - target_sim ? (rtl-sim)
+    - tool_verilator ? (verilator-waivers)
+    toplevel: cheep_peripherals
+
+  # Format using Verible
+  format:
+    <<: *default
+    description: Format source files using verible-verilog-format
+    default_tool: veribleformat
+    filesets_append:
+    - rtl-sim
+    tools:
+      veribleformat:
+        verible_format_args:
+        - '--assignment_statement_alignment=align'
+        - '--case_items_alignment=align'
+        - '--formal_parameters_indentation=indent'
+        - '--named_parameter_alignment=align'
+        - '--named_parameter_indentation=indent'
+        - '--named_port_alignment=align'
+        - '--named_port_indentation=indent'
+        - '--port_declarations_alignment=align'
+        - '--port_declarations_indentation=indent'
+        - '--assignment_statement_alignment=align'
+        - '--module_net_variable_alignment=align'
+        - '--inplace'
+
+  # Static analysis
+  lint:
+    <<: *default
+    description: Perform static analysis using Verible
+    default_tool: veriblelint
+    tools:
+      veriblelint:
+        ruleset: default
+        verible_lint_args:
+        - '--waiver_files=../../../hw/misc/verible-lint.waiver'
+        rules:
+        - 'line-length=length:120'

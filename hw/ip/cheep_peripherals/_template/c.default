@@ -1,0 +1,15 @@
+#include <stdint.h>
+
+#include "${peripheral_name}_regs.h"
+#include "cheep.h"
+
+void main(){
+
+    *(volatile uint32_t *)(${peripheral_name_upper}_START_ADDRESS + ${peripheral_name_upper}_EXAMPLE_REG_OFFSET) = 1;
+
+    for (int i = 0 ; i < 2000 ; i++) {
+        asm volatile ("nop");
+    }
+
+    return 0;
+}

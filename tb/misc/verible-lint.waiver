@@ -1,0 +1,16 @@
+# Testbench parameters
+waive --rule=plusarg-assignment --location=".*tb/tb_top.sv"
+waive --rule=typedef-enums --location=".*tb/tb_top.sv"
+
+# Analog-library behavioral models
+waive --rule=macro-name-style --location=".*analog-library/sinc_gen/sinc_gen.sv"
+waive --rule=parameter-name-style --location=".*analog-library/sinc_gen/sinc_gen.sv"
+waive --rule=parameter-name-style --location=".*analog-library/WPDT_tx/Verilog/WPDT_tx.sv"
+waive --rule=unpacked-dimensions-range-ordering --location=".*analog-library/WPDT_tx/Verilog/WPDT_tx.sv"
+waive --rule=explicit-parameter-storage-type --location=".*analog-library/WPDT_tx/Verilog/WPDT_tx.sv"
+
+# Testbenches
+waive --rule=undersized-binary-literal --location=".*tb/dmux_ctrl.sv"
+waive --rule=macro-name-style --location=".*tb/DSM_tb.sv"
+waive --rule=parameter-name-style --location=".*tb/DSM_tb.sv"
+waive --rule=macro-name-style --location=".*tb/tb_system.sv"

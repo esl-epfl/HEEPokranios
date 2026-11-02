@@ -1,0 +1,58 @@
+// Copyright 2025 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: pgm_clock_divider.hjson
+// Author: David Mallasen, Juan Sapriza
+// Description: HEEPidermis iDAC controller registers
+
+{
+    name: "pgm_clock_divider"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "divider"
+        desc:     "How many times to divide the input clock"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: "1"
+        fields: [
+            { bits: "9:0"
+              name: "divider"
+              desc: "How many times to divide the input clock"
+            }
+        ]
+        }
+        { name:   "enable"
+        desc:     "Enable the division (1) or output nothing (0)"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: "1"
+        fields: [
+            { bits: "0:0"
+              name: "enable"
+              desc: "Enable the division (1) or output nothing (0)"
+            }
+        ]
+        }
+        { name:   "bypass"
+        desc:     "If 1, then output the input clock without division"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: "1"
+        fields: [
+            { bits: "0:0"
+              name: "bypass"
+              desc: "If 1, then output the input clock without division"
+            }
+        ]
+        }
+    ]
+}

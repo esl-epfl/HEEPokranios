@@ -1,0 +1,22 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: LDO_behavior.core
+# Author: Davide Schiavone
+
+name: epfl:cheep:ldo_behavior:0.1.0
+description: HEEPidermis ldo behavioral model
+
+filesets:
+  rtl:
+    files:
+    - Verilog/LDO.sv
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+    - rtl

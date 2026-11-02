@@ -1,0 +1,24 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: sinc_gen.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:sinc_gen:0.1.0
+description: sinc_gen model
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:analog_defs
+    files:
+    - sinc_gen.sv
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+    - rtl

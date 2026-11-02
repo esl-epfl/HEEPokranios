@@ -1,0 +1,15 @@
+diff --git a/util/x_heep_gen/peripherals/base_peripherals_domain.py b/util/x_heep_gen/peripherals/base_peripherals_domain.py
+index de43140..a29ec98 100644
+--- a/util/x_heep_gen/peripherals/base_peripherals_domain.py
++++ b/util/x_heep_gen/peripherals/base_peripherals_domain.py
+@@ -32,8 +32,8 @@ class BasePeripheralDomain(PeripheralDomain):
+     _default_base_peripherals = [
+         SOC_ctrl(),
+         Bootrom(),
+-        SPI_flash(),
+-        SPI_memio(),
++        # SPI_flash(),
++        # SPI_memio(),
+         DMA(),
+         Power_manager(),
+         RV_timer_ao(),

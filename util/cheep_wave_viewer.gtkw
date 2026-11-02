@@ -1,0 +1,499 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Fri Oct  2 11:53:01 2026
+[*]
+[dumpfile] "build/epfl_cheep_cheep_0.3.0/sim-verilator/logs/waves.fst"
+[dumpfile_mtime] "Fri Oct  2 11:52:51 2026"
+[dumpfile_size] 12985509
+[savefile] "util/cheep_wave_viewer.gtkw"
+[timestart] 0
+[size] 3440 1371
+[pos] -101 -101
+*-13.930664 62140 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.tb_system.
+[treeopen] TOP.tb_system.u_cheep_top.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.reg2hw.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_DSM.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[0].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[1].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[2].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[3].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[4].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[0].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[1].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[2].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[3].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[4].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[0].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[1].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[2].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[3].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[4].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[5].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[6].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[6].u_ses_stage_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[7].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[7].u_ses_stage_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[8].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[8].u_ses_stage_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[9].
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.reg2hw.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.hw2reg.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.reg2hw.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.
+[treeopen] TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.u_slave_sm.
+[sst_width] 406
+[signals_width] 317
+[sst_expanded] 1
+[sst_vpaned_height] 655
+@800200
+-Debug section
+@820
+[color] 3
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.memory_subsystem_i.ram1_i.tc_ram_i.debug_section[31:0]
+@8022
+[color] 3
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.memory_subsystem_i.ram1_i.tc_ram_i.debug_section[31:0]
+@20000
+-
+-
+-
+@1000200
+-Debug section
+@c00200
+-WPDT
+@28
+[color] 2
+TOP.tb_system.u_wpdt_tx.ref_clk_i
+[color] 2
+TOP.tb_system.u_wpdt_tx.modulated_data_o
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.downlink_decoded_clk_o
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.downlink_decoded_data_o
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.downlink_decoded_valid_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.downlink_rst_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.uplink_encoding_clk_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt.uplink_uncoded_data_i
+@1401200
+-WPDT
+@c00200
+-WPDT>2ser
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.clk_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.data_reset_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.detect_i
+@24
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.payload_cnt[9:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.post_cnt[7:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.scko_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.scko_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.sdo_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.sdo_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_wpdt2ser.valid_no
+@1401200
+-WPDT>2ser
+@c00200
+-SPI slave
+@28
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.spi_cs_i
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.spi_mosi_i
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.spi_sclk_i
+@100000028
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.u_slave_sm.state[2:0]
+@22
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.obi_master_w_data_o[31:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.obi_master_addr_o[31:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.u_slave_sm.command[7:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.u_slave_sm.cmd_reg[7:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.debug_subsystem_i.gen_spi_slave.obi_spi_slave_i.u_slave_sm.ctrl_data_rx[31:0]
+@1401200
+-SPI slave
+@800200
+-MCU
+@28
+TOP.tb_system.u_cheep_top.gpio_0_out_x
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.core_sleep
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.rst_ni
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.ref_clk_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.system_clk_o
+TOP.tb_system.u_cheep_top.heartbeat_o
+[color] 4
+TOP.tb_system.u_cheep_top.uart_tx_o
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.intr_ext_peripheral_i
+@c00022
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+@28
+(0)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(1)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(2)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(3)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(4)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(5)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(6)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(7)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(8)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(9)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(10)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(11)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(12)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(13)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(14)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+(15)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_o[15:0]
+@1401200
+-group_end
+@c00022
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+@28
+(0)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(1)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(2)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(3)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(4)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(5)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(6)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(7)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(8)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(9)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(10)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(11)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(12)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(13)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(14)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+(15)TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.fast_intr_ctrl_i.fast_intr_clear_de[15:0]
+@1401200
+-group_end
+@1000200
+-MCU
+@c00200
+-Data funnel
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.data_available_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.ch_data_available[4:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.ch_data_read[4:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.data_read_i
+@22
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.buffer(0)[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.buffer(1)[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.buffer(2)[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.buffer(3)[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.buffer(4)[15:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.count[2:0]
+@22
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.data_i[15:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_output_buffer.data_push_i
+@1401200
+-Data funnel
+@c00200
+-Channel's data out
+@1401200
+-Channel's data out
+@c00200
+-DMA
+@28
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_trans_done[1:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_window_done[1:0]
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_window_intr_o
+@22
+[color] 4
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_i_gen[0].dma_i.data_out_wdata[31:0]
+@28
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_i_gen[0].dma_i.data_out_we
+TOP.tb_system.u_cheep_top.u_core_v_mini_mcu.ao_peripheral_subsystem_i.dma_subsystem_i.dma_i_gen[0].dma_i.data_out_gnt
+@1401200
+-DMA
+@c00200
+-Ch 0 LNA
+@10024
+[color] 1
+TOP.tb_system.u_cheep_top.ch_0_lna_vin_p_io[31:0]
+[color] 2
+TOP.tb_system.u_cheep_top.ch_0_lna_vout_p_io[31:0]
+[color] 2
+TOP.tb_system.u_cheep_top.ch_0_lna_vout_n_io[31:0]
+@1401200
+-Ch 0 LNA
+@c00200
+-Ch 0 BPE
+@10024
+[color] 3
+TOP.tb_system.u_cheep_top.ch_0_bpe_vin_p_io[31:0]
+[color] 3
+TOP.tb_system.u_cheep_top.ch_0_bpe_vin_n_io[31:0]
+[color] 4
+TOP.tb_system.u_cheep_top.ch_0_bpe_vout_p_io[31:0]
+[color] 4
+TOP.tb_system.u_cheep_top.ch_0_bpe_vout_n_io[31:0]
+@22
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.BPE.u_BPE.pwm_i[3:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.BPE.u_BPE.clk_i
+@1000200
+-Ch 0 BPE
+@c00200
+-Ch 0 DSM
+@28
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_DSM.dsm_en_ni
+@8420
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_DSM.delta_in[31:0]
+@20000
+-
+-
+@28
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.dsm_clk_o
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_DSM.dsm_clk
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_DSM.out_o
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.CIC_activated
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.SES_activated
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.dsm_in_i
+@c00200
+-SES stages
+@8022
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[0].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[1].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[2].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[3].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[4].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[5].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[6].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[7].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[8].u_ses_stage_i.data_o[23:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_ses_filter.gen_ses_stage[9].u_ses_stage_i.data_o[23:0]
+@1401200
+-SES stages
+@c00200
+-CIC stages
+@8420
+[color] 2
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[0].cic_integrator_inst.data_o[31:0]
+[color] 2
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[1].cic_integrator_inst.data_o[31:0]
+[color] 2
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[3].cic_integrator_inst.data_o[31:0]
+[color] 2
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_integrators_inst.cic_stages[4].cic_integrator_inst.data_o[31:0]
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[0].cic_comb_inst.data_o[31:0]
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[1].cic_comb_inst.data_o[31:0]
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[2].cic_comb_inst.data_o[31:0]
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[3].cic_comb_inst.data_o[31:0]
+@8022
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.u_cic_filter.cic_core_i.cic_combs_inst.cic_stages[4].cic_comb_inst.data_o[31:0]
+@1401200
+-CIC stages
+@28
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.refresh_notif_o
+@8420
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DSM.u_dsm_decimation.data_o[31:0]
+@20000
+-
+-
+-
+@8022
+[color] 6
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.data_o[15:0]
+@20000
+-
+-
+@1401200
+-Ch 0 DSM
+@c00200
+-dLC
+@8420
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.hw_r_fifo_data_out[31:0]
+@20000
+-
+-
+@28
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.dlc_dir_o
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.dlc_xing_o
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.hw_w_fifo_push
+@100000028
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.dlc_state[1:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.dlvl_ovf
+@24
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.dt_ovf_cnt[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.sdiff_cnt[15:0]
+@8028
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.hw_w_fifo_data_in[15:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.DLC.dlc_i.clk_i
+@1401200
+-dLC
+@c00200
+-Ch 0 PDVCO
+@8420
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_VCO_p.vin[31:0]
+@28
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_VCO_p.phase_o
+@20000
+-
+@24
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.count_diff_o[31:0]
+@8420
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.count[31:0]
+@20000
+-
+-
+@100000028
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.duty_state[1:0]
+@8024
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.duty_timer[31:0]
+@28
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.refresh
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.clk_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.count_update
+@22
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.count_syncd[31:0]
+@28
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.ovf_o
+@8420
+[color] 7
++{VCO P diff} TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.u_vco_p_counter.count_diff_o[31:0]
+@20000
+-
+@8024
+[color] 6
++{VCO N diff} TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.PDVCO_P.PDVCO.u_vco_n_counter.count_diff_o[31:0]
+@20000
+-
+@8420
+[color] 5
++{PD VCO out} TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_0.u_channel_multipath_reg_top.pdvco_out_qs[31:0]
+@20000
+-
+@1401200
+-Ch 0 PDVCO
+@c00200
+-Ch 3 LC
+@10420
+[color] 3
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.LC.u_LC.vin_s
+@20000
+-
+-
+@8420
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.LC.u_LC.Vlvl_uV[31:0]
+@20000
+-
+-
+@10420
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.LC.u_LC.Vres_uV
+@20000
+-
+-
+-
+@28
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.LC.u_LC.dir_o
+[color] 7
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.LC.u_LC.xing_o
+@1401200
+-Ch 3 LC
+@c00200
+-Ch 3 dLC
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dir_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.xing_i
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.lc_xing_pending
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dlc_dir_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dlc_xing_o
+@100000028
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dlc_state[1:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.sdiff_cnt_en
+@24
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.sdiff_cnt[15:0]
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dt_ovf_cnt[15:0]
+@28
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.hw_w_fifo_push
+[color] 1
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.hw_w_fifo_data_in[15:0]
+@100000028
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dlc_state[1:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_channel_3.DLC.dlc_i.dlc_done_o
+@1401200
+-Ch 3 dLC
+@800201
+-dMUX
+@29
+TOP.tb_system.u_cheep_top.dmux_sel_0_io
+TOP.tb_system.u_cheep_top.dmux_sel_1_io
+TOP.tb_system.u_cheep_top.system_clk
+TOP.tb_system.u_cheep_top.debug_manual_start_o
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_0_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_1_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_2_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_3_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_4_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_5_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_6_io
+[color] 2
+TOP.tb_system.u_cheep_top.dmux_io_7_io
+@1000201
+-dMUX
+@c00200
+-iDAC
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_iDAC.refresh_i
+@22
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_iDAC.value_i[7:0]
+@28
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_idac_ctrl.refresh_o
+TOP.tb_system.u_cheep_top.u_cheep_peripherals.u_idac_ctrl.refresh_notif_o
+@1401200
+-iDAC
+[pattern_trace] 1
+[pattern_trace] 0

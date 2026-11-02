@@ -1,0 +1,37 @@
+CAPI=2:
+
+name: "epfl:cheep:cic_filter"
+description: "core-v-mini-mcu pdm to pcm converter peripheral"
+
+# Copyright 2022 EPFL
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+
+# Author: Pierre Guillod <pierre.guillod@epfl.ch>, EPFL, STI-SEL
+# Date: 15.12.2022
+
+filesets:
+  files_rtl:
+    depend:
+      - pulp-platform.org::common_cells
+    files:
+      - rtl/cic_filter_reg_pkg.sv
+      - rtl/cic_filter_reg_top.sv
+      - rtl/cic_combs.sv
+      - rtl/cic_comb.sv
+      - rtl/cic_integrators.sv
+      - rtl/decimator.sv
+      - rtl/cic_integrator.sv
+      - rtl/cic_core.sv
+      - rtl/CIC_filter.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/CIC_filter-waivers.vlt
+    file_type: vlt
+
+targets:
+  default:
+    filesets:
+    - files_rtl

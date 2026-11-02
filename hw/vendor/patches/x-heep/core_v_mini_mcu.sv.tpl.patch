@@ -1,0 +1,49 @@
+diff --git a/hw/core-v-mini-mcu/core_v_mini_mcu.sv.tpl b/hw/core-v-mini-mcu/core_v_mini_mcu.sv.tpl
+index fb1ca41..bd0c0a4 100644
+--- a/hw/core-v-mini-mcu/core_v_mini_mcu.sv.tpl
++++ b/hw/core-v-mini-mcu/core_v_mini_mcu.sv.tpl
+@@ -54,7 +54,10 @@ module core_v_mini_mcu
+         % endif
+       % endif
+     % endfor
+-    
++
++    // SPI slave
++    input logic spi_slave_cs_i,
++
+     // IDs
+     input logic [31:0] hart_id_i,
+     input logic [31:0] xheep_instance_id_i,
+@@ -147,6 +150,23 @@ module core_v_mini_mcu
+   end
+ `endif
+ 
++logic boot_select_i;
++logic execute_from_flash_i;
++assign boot_select_i = 0;
++assign execute_from_flash_i = 0;
++
++/* verilator lint_off UNUSED */
++/* verilator lint_off UNDRIVEN */
++<%
++not_used_signals = [ "spi_flash_sck_o", "spi_sck_o", "spi2_sck_o", "ddr_rcv_clk_i", "ddr_snd_clk_o", "ddr_rcv_0_i", "ddr_rcv_1_i", "ddr_rcv_2_i", "ddr_rcv_3_i", "ddr_snd_0_o", "ddr_snd_1_o", "ddr_snd_2_o", "ddr_snd_3_o"]
++%>
++// These variables are not used, but are declared as part of the peripheral subsystem, so they need to be added manually outside. Modify this list in the hw/vendor/patches/x-heep patch
++% for signal in not_used_signals:
++logic ${signal};
++% endfor
++/* verilator lint_on UNDRIVEN */
++/* verilator lint_on UNUSED */
++
+   // masters signals
+   obi_req_t core_instr_req;
+   obi_resp_t core_instr_resp;
+@@ -525,7 +545,7 @@ module core_v_mini_mcu
+       .i2s_sd_oe_o(i2s_sd_oe_o),
+       .i2s_sd_i(i2s_sd_i),
+       .i2s_rx_valid_o(i2s_rx_valid),
+-      .ddr_rcv_clk_i,  
++      .ddr_rcv_clk_i,
+       .ddr_snd_clk_o,
+       .ddr_rcv_0_i,
+       .ddr_rcv_1_i,

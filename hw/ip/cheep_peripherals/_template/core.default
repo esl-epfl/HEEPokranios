@@ -1,0 +1,32 @@
+CAPI=2:
+
+# Copyright ${year} EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: ${peripheral_name}.core
+# Author: ${author}
+
+name: epfl:cheep:${peripheral_name.lower()}:0.1.0
+description: ${peripheral_name}
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:packages
+    files:
+    - rtl/${peripheral_name.lower()}_reg_pkg.sv
+    - rtl/${peripheral_name.lower()}_reg_top.sv
+    - rtl/${peripheral_name}.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/${peripheral_name}-waivers.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

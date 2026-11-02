@@ -1,0 +1,8 @@
+// Copyright 2025 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: WPDT-waivers.vlt
+// Author: David Mallasen
+// Description: Verilator waivers for WPDT
+

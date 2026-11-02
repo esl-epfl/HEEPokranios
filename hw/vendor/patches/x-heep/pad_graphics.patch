@@ -1,0 +1,13 @@
+diff --git a/util/x_heep_gen/pads/graphic.py b/util/x_heep_gen/pads/graphic.py
+index e252ff1..2d9241b 100644
+--- a/util/x_heep_gen/pads/graphic.py
++++ b/util/x_heep_gen/pads/graphic.py
+@@ -102,7 +102,7 @@ def generate_floorplan_visuals(floorplan, padring, filename_base="floorplan"):
+     # Standard: Matte Rainbow
+     for i, name in enumerate(standard_names):
+         hue = int((i / max(1, len(standard_names))) * 360)
+-        color_map[name] = f"hsl({hue}, 60%, 70%)"
++        color_map[name] = f"hsl({hue}, 80%, 50%)"
+     # Physical: Matte Muted Blue/Greys
+     for i, name in enumerate(physical_names):
+         color_map[name] = f"hsl(210, 20%, {60 + (i*5)%30}%)"

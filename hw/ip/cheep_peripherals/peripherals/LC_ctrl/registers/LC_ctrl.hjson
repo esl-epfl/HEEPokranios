@@ -1,0 +1,49 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: LC_ctrl.hjson
+// Author: Juan Sapriza
+
+{
+    name: "LC_ctrl"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "lvl_width_sel"
+            desc:     "Select the level widths"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: "4"
+            fields: [
+                { bits: "3:0"}
+            ]
+        }
+        { name:   "dir_width_sel"
+            desc:     "Select the direction widths"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: "4"
+            fields: [
+                { bits: "3:0"}
+            ]
+        }
+        { name:   "cap_sel"
+            desc:     "Select the follower capacitance"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: "2"
+            fields: [
+                { bits: "1:0"}
+            ]
+        }
+
+        ]
+}

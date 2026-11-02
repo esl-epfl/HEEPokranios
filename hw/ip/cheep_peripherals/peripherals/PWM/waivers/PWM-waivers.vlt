@@ -1,0 +1,15 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: PWM-waivers.sv
+// Author:Juan Sapriza
+// Description: Verilator waivers for PWM
+
+`verilator_config
+// Automatically generated control registers
+lint_off -rule DECLFILENAME -file "*/PWM/rtl/pwm_reg_top.sv" -match "Filename 'pwm_reg_top' does not match MODULE name: 'pwm_reg_top_intf'"
+
+lint_off -rule WIDTH -file "*/PWM/rtl/pwm_reg_top.sv" -match "Operator ASSIGNW expects * bits on the Assign RHS, but Assign RHS's SEL generates * bits."
+lint_off -rule WIDTH -file "*/PWM/rtl/pwm_reg_top.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'reg_rdata' generates 8 bits."
+lint_off -rule WIDTH -file "*/PWM/rtl/pwm_reg_top.sv" -match "Operator NOT expects 4 bits on the LHS, but LHS's VARREF 'reg_be' generates 1 bits."

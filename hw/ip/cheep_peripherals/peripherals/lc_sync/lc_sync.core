@@ -1,0 +1,31 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: lc_sync.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:lc_sync:0.1.0
+description: lc_sync
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:packages
+    - pulp-platform.org::common_cells
+    files:
+    - rtl/lc_sync.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/lc_sync-waivers.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

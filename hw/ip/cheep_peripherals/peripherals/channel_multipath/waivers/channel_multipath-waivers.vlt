@@ -1,0 +1,17 @@
+// Copyright 2022 EPFL and Politecnico di Torino.
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// Author: Michele Caon
+// Date: 14/06/2023
+// Description: Waivers for cheep peripherals
+
+`verilator_config
+// Automatically generated control registers
+
+lint_off -rule DECLFILENAME -file "*/channel_multipath/rtl/channel_multipath_reg_top.sv" -match "Filename 'channel_multipath_reg_top' does not match MODULE name: 'channel_multipath_reg_top_intf'"
+lint_off -rule UNUSED -file "*/channel_multipath/rtl/channel_multipath_reg_top.sv" -match "Parameter is not used: 'AW'"
+
+lint_off -rule WIDTH -file "*/channel_multipath/rtl/channel_multipath_reg_top.sv" -match "Operator ASSIGNW expects * bits on the Assign RHS, but Assign RHS's SEL generates * bits."
+lint_off -rule WIDTH -file "*/channel_multipath/rtl/channel_multipath_reg_top.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'reg_rdata' generates 8 bits."
+lint_off -rule WIDTH -file "*/channel_multipath/rtl/channel_multipath_reg_top.sv" -match "Operator NOT expects 4 bits on the LHS, but LHS's VARREF 'reg_be' generates 1 bits."

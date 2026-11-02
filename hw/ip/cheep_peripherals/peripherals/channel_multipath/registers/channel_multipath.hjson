@@ -1,0 +1,240 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: channel_multipath.hjson
+// Author: Juan Sapriza
+
+{
+    name: "channel_multipath"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "lna_en"
+        desc:     "Enable the LNA"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '1'
+        fields: [
+            { bits: "0:0"
+              name: "lna_en"
+              desc: "Enable the LNA"
+               }
+           ]
+        }
+        { name:   "buff_en"
+        desc:     "Enable the BUFF"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '1'
+        fields: [
+            { bits: "0:0"
+              name: "buff_en"
+              desc: "Enable the BUFF"
+               }
+           ]
+        }
+        { name:   "bpe_en"
+        desc:     "Enable the LFP"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '1'
+        fields: [
+            { bits: "0:0"
+              name: "bpe_en"
+              desc: "Enable the LFP"
+               }
+           ]
+        }
+        { name:   "dsm_en"
+        desc:     "Enable the DSM. The DSM block has an active LOW en, so this value is inverted to send it to the DSM."
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '1'
+        fields: [
+            { bits: "0:0"
+              name: "dsm_en"
+              desc: "Enable the DSM"
+               }
+           ]
+        }
+        { name:   "lc_en"
+        desc:     "Enable the LC, active LOW"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '0'
+        fields: [
+            { bits: "0:0"
+              name: "lc_en"
+              desc: "Enable the LC"
+               }
+           ]
+        }
+        { name:   "pdvco_en"
+        desc:     "Enable the VCOs and their counters"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: '3'
+        fields: [
+            { bits: "0:0"
+              name: "vco_p_en"
+              desc: "Enable the VCO P and its counter"
+               },
+            { bits: "1:1"
+              name: "vco_n_en"
+              desc: "Enable the VCO N and its counter"
+               }
+           ]
+        }
+        { name:   "pwm_en"
+          desc:     "Enable the PWMs in a coordinated fashion."
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: "15"
+          fields: [
+              { bits: "3:0" }
+          ]
+        }
+        { name:   "dlc_en"
+          desc:     "Enable the dLC."
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: "0"
+          fields: [
+              { bits: "0" }
+          ]
+        }
+        { name:   "dlc_derivative"
+          desc:     "Differentiate the input to the dLC before it is compared."
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: "0"
+          fields: [
+              { bits: "0" }
+          ]
+        }
+        { name:   "dlc_offset"
+          desc:     "Add an offset at the input of the dLC to avoid common amplitude landing around a level."
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: "0"
+          fields: [
+              { bits: "5:0" }
+          ]
+        }
+        { name:   "vco_p_out"
+          desc:     "Difference of the VCO P counter's outputs"
+          swaccess: "ro"
+          hwaccess: "hwo"
+          fields: [
+            { bits: "31:0"}
+           ]
+        }
+        { name:   "vco_n_out"
+          desc:     "Difference of the VCO N counter's outputs"
+          swaccess: "ro"
+          hwaccess: "hwo"
+          fields: [
+            { bits: "31:0"}
+           ]
+        }
+        { name:   "pdvco_out"
+          desc:     "Difference of the 2 VCO-counters' differences outputs"
+          swaccess: "ro"
+          hwaccess: "hwo"
+          fields: [
+            { bits: "31:0"}
+           ]
+        }
+        { name:   "vco_phase_output"
+          desc:     "Output the VCO's phase instead of the OVF flag"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+            { bits: "0"}
+           ]
+        }
+        { name:   "dsm_filter_out"
+          desc:     "Output of the DSM decimation filter"
+          swaccess: "ro"
+          hwaccess: "hwo"
+          fields: [
+            { bits: "31:0"}
+           ]
+        }
+        { name:   "dsm_connect_internally"
+          desc:     "Connect the output of the DSM to the input of the decimator, and the output of the decimator clock to the DSM input clock"
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: '0'
+          fields: [
+            { bits: "0:0"}
+           ]
+        }
+        { name:   "bpe_connect_internally"
+          desc:     "Connect the output of the PWM to the input of the BPE"
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: '0'
+          fields: [
+            { bits: "0:0"}
+           ]
+        }
+        { name:   "bpe_change_freq"
+          desc:     "Enable the base clock frequency change for the BPE. Otherwise, it will use the default division (/100)"
+          swaccess: "rw"
+          hwaccess: "hro"
+          resval: '0'
+          fields: [
+            { bits: "0:0"}
+           ]
+        }
+        { name:   "data_out"
+          desc:     "Output packet"
+          swaccess: "ro"
+          hwaccess: "hrw"
+          hwext: "true", // The registered will be stored outside the register module
+          hwre: "true", // The hw will receive a pulse when the registered is read
+          fields: [
+              { bits: "15:0", desc: "Output data of the channel" }
+          ]
+        }
+        { name:   "data_available"
+          desc:     "New data is available"
+          swaccess: "ro"
+          hwaccess: "hrw"
+          fields: [
+              { bits: "0"}
+          ]
+        }
+        { name:   "buffer_flush"
+          desc:     "Flush the buffer containing data"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+              { bits: "0"}
+          ]
+        }
+        {   name:     "data_source_sel"
+            desc:     "Data source selection mask. Bit 0: DSM, Bit 1: VCO_P, Bit 2: VCO_N, (Combine bit 1+2 to get from the PDVCO) Bit 3: LC"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval:   "1"
+            fields: [
+                {
+                    bits: "3:0",
+                    name: "data_source_sel",
+                    desc: "4-bit selection vector for data source."
+                }
+            ]
+        }
+
+        ]
+}

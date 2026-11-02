@@ -1,0 +1,195 @@
+// iDAC Module 
+// Verilog-A Model
+// Filippo Quadri - 2025
+
+// =============================================================
+//  Verilog-A DAC Module - Overview and Port Description
+// =============================================================
+//
+//  Description:
+//  - Implements an 8-bit Digital-to-Analog Converter (DAC) with
+//    optional 5-bit calibration capability.
+//  - Two behavioral models available:
+//      - Polynomial model: fitted to SPICE data (DAC_IN = 127)
+//      - Linear model: ideal theoretical behavior
+//  - Fixed input current (DAC_IIN) is set to 400nA.
+//  - To evaluate calibration effects, use the polynomial model
+//    or modify DAC_IIN to introduce variability.
+//
+//  ----------------------------------------------------------------
+//  TO USE THE POLYNOMIAL MODEL: 
+//  - Set `define POLY_MODEL 1
+//
+//  TO USE THE LINEAR MODEL:
+//  - Set `define POLY_MODEL 0
+//  ----------------------------------------------------------------
+//
+//  Port Summary:
+//  ----------------------------------------------------------------
+//  Signal Name     | Direction | Description
+//  ----------------------------------------------------------------
+//  DAC_EN          |   input   | Enable signal (active high)
+//  DAC_REFRESH     |   input   | Updates DAC_IN on rising edge
+//  DAC_CAL[4:0]    |   input   | Calibration control (5-bit)
+//  DAC_IN[7:0]     |   input   | Digital input code (8-bit)
+//  DAC_IIN         |   input   | Fixed input current (400nA)
+//  ----------------------------------------------------------------
+//  DAC_OUT         |   output  | Analog output current
+//  ----------------------------------------------------------------
+//  DAC_VDD         |   inout   | Power supply (typically 1.2V)
+//  DAC_VSS         |   inout   | Ground
+//  ----------------------------------------------------------------
+//
+//  Notes:
+//  - DAC_EN enables the DAC output current.
+//  - DAC_REFRESH latches the input value on its rising edge.
+//  - DAC_CAL adjusts the output current via calibration logic.
+//  - DAC_IN defines the desired digital input and sets the
+//    corresponding theoretical output current.
+//  - DAC_OUT provides the resulting analog output current.
+//
+// =============================================================
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+`define IN_WIDTH        8
+`define CAL_WIDTH       5
+
+`define POLY_MODEL      1
+
+
+module iDAC(DAC_EN, DAC_REFRESH, DAC_CAL, DAC_IN, DAC_IIN, DAC_OUT, DAC_VDD, DAC_VSS);
+
+    // Define the ports
+    input  DAC_EN;
+    input  DAC_REFRESH;
+    input  [`CAL_WIDTH-1:0] DAC_CAL;
+    input  [`IN_WIDTH-1:0]  DAC_IN;
+    input  DAC_IIN;
+    output DAC_OUT;
+    inout  DAC_VDD;
+    inout  DAC_VSS;
+
+    // Create the analog ports
+    voltage  DAC_EN;
+    voltage  DAC_REFRESH;
+    voltage  [`CAL_WIDTH-1:0] DAC_CAL;
+    voltage  [`IN_WIDTH-1:0]  DAC_IN;
+    current  DAC_IIN;
+    current  DAC_OUT;
+    voltage  DAC_VDD;
+    voltage  DAC_VSS;
+
+    // Internal variables
+    real generated_current;
+    
+    integer DAC_CAL_meas [`CAL_WIDTH-1:0];
+    integer DAC_IN_meas [`IN_WIDTH-1:0];
+
+    integer DAC_CAL_val;
+    integer DAC_IN_val;
+
+    integer skip_computation;
+
+    real DAC_IIN_val;
+
+    // Parameters
+    real vth_high = 1.2;
+    real vth_low  = 0.0;
+    real v_th = 0.6;
+
+    genvar i;
+
+    // Analog behavior
+    analog begin
+
+        @(initial_step) begin
+            // Initialize the DAC output current to zero
+            generated_current = 0;
+            I(DAC_OUT) <+ generated_current;
+
+            vth_high = V(DAC_VDD) * 0.9;
+            vth_low  = V(DAC_VDD) * 0.1;
+            v_th = V(DAC_VDD) * 0.5;
+        end
+
+        @(cross(V(DAC_REFRESH) - v_th, 1)) begin
+            if (V(DAC_EN) > vth_high) begin
+                for (i = 0; i < `IN_WIDTH; i = i + 1) begin
+                    if (V(DAC_IN[i]) > vth_high) begin
+                        DAC_IN_meas[i] = 1;
+                    end else if (V(DAC_IN[i]) < vth_low) begin
+                        DAC_IN_meas[i] = 0;
+                    end else begin
+                        $strobe("DAC_IN[%0d] = %f is not in the valid range (< %f or > %f)", i, V(DAC_IN[i]), vth_low, vth_high);
+                        $finish_current_analysis;
+                    end
+                end
+            end
+        end
+
+        if (V(DAC_EN) < vth_low) begin
+            for (i = 0; i < `IN_WIDTH; i = i + 1) begin
+            
+                // reset the in value
+                DAC_IN_meas[i] = 0;
+
+            end
+        
+        end
+
+        if (V(DAC_EN) > vth_high) begin
+            for (i = 0; i < `CAL_WIDTH; i = i + 1) begin
+                if (V(DAC_CAL[i]) > vth_high) begin
+                    DAC_CAL_meas[i] = 0;
+                end else if (V(DAC_CAL[i]) < vth_low) begin
+                    DAC_CAL_meas[i] = 1;
+                end else begin
+                    skip_computation = 1;
+                end
+            end
+
+            if (skip_computation == 1) begin
+                // Skip the computation if the calibration value is not valid
+                generated_current = 0;
+                I(DAC_OUT) <+ generated_current;
+                skip_computation = 0;
+            end
+            // Convert the digital input to an integer value
+            DAC_IN_val = 0;
+            for (i = 0; i < `IN_WIDTH; i = i + 1) begin
+                DAC_IN_val = DAC_IN_val + (DAC_IN_meas[i] * (2 ** i));
+            end
+
+            // Convert the calibration value to an integer
+            DAC_CAL_val = 0;
+            for (i = 0; i < `CAL_WIDTH; i = i + 1) begin
+                DAC_CAL_val = DAC_CAL_val + (DAC_CAL_meas[i] * (2 ** i));
+            end
+
+            DAC_IIN_val = I(DAC_IIN);
+
+            if (`POLY_MODEL == 1) begin
+                // Polynomial model for the DAC output current (fitted on the SPICE measurements)
+                generated_current = DAC_IIN_val / 10.0 * DAC_IN_val * (-2.766e-08 * DAC_CAL_val ** 5 + + 2.286e-06 * DAC_CAL_val ** 4 - 7.245e-05 * DAC_CAL_val ** 3 + 0.001239 * DAC_CAL_val ** 2 - 0.02479 * DAC_CAL_val + 1.254);
+            end else begin
+                // Simple linear model for the DAC output current (expected one)
+                // generated_current = DAC_IIN_val / 10.0 * DAC_IN_val * ((16 - DAC_CAL_val) * 0.01 + 1.0);
+                generated_current = 8 * DAC_IIN_val * DAC_IN_val / (95 - DAC_CAL_val);
+            end
+            
+            // DEBUG: Print the values for debugging
+            // $strobe("DAC_IN_val: %d, DAC_CAL_val: %d, generated_current: %f nA, EN: %f, REFRESH: %f", 
+            //         DAC_IN_val, DAC_CAL_val, generated_current * 1e9, V(DAC_EN), V(DAC_REFRESH));
+            I(DAC_OUT) <+ generated_current; 
+        
+        end else begin
+            // Disable output current when not enabled
+            generated_current = 0;
+            I(DAC_OUT) <+ generated_current;
+        end
+    end
+
+
+endmodule

@@ -1,0 +1,23 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: vREF.core
+# Author: David Mallasen
+
+name: epfl:cheep:vref:0.1.0
+description: HEEPidermis iDAC analog model
+
+filesets:
+  rtl:
+    files:
+    - include/vref_pkg.sv
+    - Verilog/vREF_wrapper.sv
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+    - rtl

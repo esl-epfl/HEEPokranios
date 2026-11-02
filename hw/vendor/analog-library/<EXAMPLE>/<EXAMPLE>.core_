@@ -1,0 +1,30 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: <EXAMPLE>>.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:<example>:0.1.0
+description: <EXAMPLE> model
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:analog_defs
+    files:
+    - Verilog/<EXAMPLE>_wrapper.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/<EXAMPLE>.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

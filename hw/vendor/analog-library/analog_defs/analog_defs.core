@@ -1,0 +1,23 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: analog_defs.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:analog_defs:0.1.0
+description: Analog package with definitions for digital-on-top design
+
+filesets:
+
+  rtl:
+    files:
+    - analog_defs.svh: {is_include_file: true}
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+    - rtl

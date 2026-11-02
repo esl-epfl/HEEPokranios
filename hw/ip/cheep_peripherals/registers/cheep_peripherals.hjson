@@ -1,0 +1,169 @@
+// Copyright 2025 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: cheep_peripherals.hjson
+// Author: David Mallasen, Juan Sapriza
+
+{
+    name: "cheep_peripherals"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "interface_word" // Keep this one first so its address is kept constant
+            desc:     "Word that can be used to wake-up the CPU and transmit data"
+            swaccess: "rw"
+            hwaccess: "hrw"
+            hwqe: "true" # To know from HW that data has been written
+            resval: '0'
+            fields: [
+                { bits: "31:0" }
+            ]
+        }
+        { name:   "wpdt_downlink_payload_length_bits"
+            desc:     "Length of the payload to be received (after how many bits to lower the detect signal, or after how many bits a new preamble needs to be sent)"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '32'
+            fields: [
+                { bits: "9:0" }
+            ]
+        }
+        { name:   "wpdt_uplink_reset"
+            desc:     "Reset the uplink circuit, ACTIVE HIGH. "
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '0'
+            fields: [
+                { bits: "0" }
+            ]
+        }
+        { name:   "wpdt_downlink_reset"
+            desc:     "Reset the uplink circuit, ACTIVE HIGH. "
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '0'
+            fields: [
+                { bits: "0" }
+            ]
+        }
+        { name:   "dmux_cpu_sel"
+            desc:     "Make the CPU control the dMUX"
+            swaccess: "rw"
+            hwaccess: "hro"
+            fields: [
+                { bits: "0" }
+            ]
+        }
+        { name:   "input_data"
+            desc:     "The last available data from any channel, including their channel ID"
+            swaccess: "ro"
+            hwaccess: "hrw"
+            hwext: "true", // The registered will be stored outside the register module
+            hwre: "true", // The hw will receive a pulse when the registered is read
+            fields: [
+                { bits: "18:0" }
+            ]
+        }
+        { name:   "input_data_available"
+            desc:     "New data is available"
+            swaccess: "ro"
+            hwaccess: "hrw"
+            fields: [
+                { bits: "0"}
+            ]
+        }
+        { name:   "input_buffer_flush"
+          desc:     "Flush the buffer containing input data"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+              { bits: "0"}
+          ]
+        }
+        { name:   "funnel_en"
+            desc:     "Funnel data from channels into a centralized circular buffer (channels will be asserted by the funnel)"
+            swaccess: "rw"
+            hwaccess: "hro"
+            fields: [
+                { bits: "0"}
+            ]
+        }
+        { name:   "output_buffer_flush"
+          desc:     "Flush the buffer containing output data (to be serialized)"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+              { bits: "0"}
+          ]
+        }
+        { name:   "output_half_speed"
+          desc:     "Use two clock cycles per bit"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+              { bits: "0"}
+          ]
+        }
+        { name:   "output_bytes_to_skip"
+          desc:     "How many byts to ignore from the output data"
+          swaccess: "rw"
+          hwaccess: "hro"
+          fields: [
+              { bits: "1:0"}
+          ]
+        }
+        { name:   "output_data"
+            desc:     "Data to be serialized for transmission"
+            swaccess: "rw"
+            hwaccess: "hro"
+            hwqe: "true" # To know from HW that data has been written
+            fields: [
+                { bits: "31:0" }
+            ]
+        }
+        { name:   "wpdt_reset_data"
+            desc:     "Manually reset the WPDT data reception (wont receive data and can be used to reset the state of the clock)"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '0'
+            fields: [
+                { bits: "0" }
+            ]
+        }
+        { name:   "output_byte"
+            desc:     "Byte to be sent parallel on the dMUX"
+            swaccess: "rw"
+            hwaccess: "hro"
+            fields: [
+                { bits: "7:0" }
+            ]
+        }
+        { name:   "spi_slave_enable"
+            desc:     "Enable the SPI slave. If set to 0, the CS is internally held HIGH."
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '1'
+            fields: [
+                { bits: "0:0" }
+            ]
+        }
+        { name:   "ch_3_dlc_output"
+            desc:     "Output the dLC outputs instead of the LC-ADC ones for the channel 3"
+            swaccess: "rw"
+            hwaccess: "hro"
+            resval: '0'
+            fields: [
+                { bits: "0:0" }
+            ]
+        }
+
+    ]
+}

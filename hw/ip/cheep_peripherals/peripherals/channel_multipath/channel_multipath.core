@@ -1,0 +1,56 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: channel_multipath.core
+# Author: Juan Sapriza, David Mallasen
+
+name: epfl:cheep:channel_multipath:0.1.0
+description: HEEPidermis analog subsystem
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:packages
+    - epfl:cheep:analog_defs
+    - epfl:cheep:lna
+    - epfl:cheep:LNA_ctrl
+    - epfl:cheep:bpe
+    - epfl:cheep:BPE_ctrl
+    - epfl:cheep:pwm
+    - epfl:cheep:vco
+    - epfl:cheep:buff
+    - epfl:cheep:dsm
+    - epfl:cheep:dsm_ctrl
+    - epfl:cheep:dsm_decimation
+    - epfl:cheep:circular_buffer
+    - epfl:cheep:dlc
+    - epfl:cheep:lc
+    - epfl:cheep:lc_ctrl
+    - epfl:cheep:lc_sync
+    - epfl:cheep:se_buff
+    files:
+    - rtl/channel_multipath_reg_pkg.sv
+    - rtl/channel_multipath_reg_top.sv
+    - rtl/channel_multipath.sv
+    - rtl/bpe_if.sv
+    - rtl/lna_if.sv
+    - rtl/buff_if.sv
+    - rtl/dsm_if.sv
+    - rtl/pdvco_if.sv
+    - rtl/dlc_if.sv
+    - rtl/lc_if.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/channel_multipath-waivers.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

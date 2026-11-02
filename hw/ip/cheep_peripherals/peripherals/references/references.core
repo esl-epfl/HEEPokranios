@@ -1,0 +1,32 @@
+CAPI=2:
+
+# Copyright 2025 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: references.core
+# Author: Juan Sapriza, David Mallasen
+
+name: epfl:cheep:references:0.1.0
+description: HEEPidermis analog subsystem
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:iref_packages
+    - epfl:cheep:vref_packages
+    - epfl:cheep:refs_ctrl
+    files:
+    - rtl/references.sv
+    file_type: systemVerilogSource
+
+  # Verilator waiver file
+  verilator-waivers:
+    files:
+    - waivers/references-waivers.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl

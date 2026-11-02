@@ -1,0 +1,16 @@
+// Copyright ${year} EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: ${peripheral_name}-waivers.sv
+// Author:${author}
+// Description: Verilator waivers for ${peripheral_name}
+
+`verilator_config
+// Automatically generated control registers
+lint_off -rule DECLFILENAME -file "*/${peripheral_name}/rtl/${peripheral_name.lower()}_reg_top.sv" -match "Filename '${peripheral_name.lower()}_reg_top' does not match MODULE name: '${peripheral_name.lower()}_reg_top_intf'"
+lint_off -rule UNUSED -file "*/${peripheral_name}/rtl/${peripheral_name.lower()}_reg_top.sv" -match "Parameter is not used: 'AW'"
+
+lint_off -rule WIDTH -file "*/${peripheral_name}/rtl/${peripheral_name.lower()}_reg_top.sv" -match "Operator ASSIGNW expects * bits on the Assign RHS, but Assign RHS's SEL generates * bits."
+lint_off -rule WIDTH -file "*/${peripheral_name}/rtl/${peripheral_name.lower()}_reg_top.sv" -match "Operator ASSIGNW expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'reg_rdata' generates 8 bits."
+lint_off -rule WIDTH -file "*/${peripheral_name}/rtl/${peripheral_name.lower()}_reg_top.sv" -match "Operator NOT expects 4 bits on the LHS, but LHS's VARREF 'reg_be' generates 1 bits."

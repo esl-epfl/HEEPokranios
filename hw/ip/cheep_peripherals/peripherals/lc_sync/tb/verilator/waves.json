@@ -1,0 +1,157 @@
+{
+    "extensionVersion": "1.5.4",
+    "fileName": "/home/michi/Documents/post-doc/projects/ddr-edge-detector/build/epfl_heepokranios_ddr-edge-detector_0.1.0/sim-verilator/logs/waves.fst",
+    "markerTime": 15761,
+    "altMarkerTime": 1005,
+    "displayTimeUnit": "ps",
+    "selectedSignal": {
+      "name": "ddr_edge_detector_tb.dut.dir_o",
+      "msb": -1,
+      "lsb": -1
+    },
+    "zoomRatio": 0.9212775528565003,
+    "scrollLeft": 14536,
+    "defaultPixelTime": 100,
+    "displayedSignals": [
+      {
+        "dataType": "signal-separator",
+        "label": "TB",
+        "rowHeight": 1
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 13,
+        "name": "ddr_edge_detector_tb.clk",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "clk",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 14,
+        "name": "ddr_edge_detector_tb.rst_n",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "rst_n",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 15,
+        "name": "ddr_edge_detector_tb.dut_clk",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "dut_clk",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 21,
+        "name": "ddr_edge_detector_tb.xing_delayed_q",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "xing_delayed_q",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 22,
+        "name": "ddr_edge_detector_tb.dir_delayed_q",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "dir_delayed_q",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "signal-separator",
+        "label": "DUT",
+        "rowHeight": 1
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 28,
+        "name": "ddr_edge_detector_tb.dut.clk_i",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "clk_i",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 30,
+        "name": "ddr_edge_detector_tb.dut.xing_i",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "xing_i",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 31,
+        "name": "ddr_edge_detector_tb.dut.dir_i",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "dir_i",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 32,
+        "name": "ddr_edge_detector_tb.dut.xing_o",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "xing_o",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      },
+      {
+        "dataType": "netlist-variable",
+        "netlistId": 33,
+        "name": "ddr_edge_detector_tb.dut.dir_o",
+        "numberFormat": "binary",
+        "colorIndex": 0,
+        "rowHeight": 1,
+        "verticalScale": 1,
+        "nameType": "fullPath",
+        "customName": "dir_o",
+        "renderType": "binary",
+        "valueLinkEnable": false
+      }
+    ]
+  }

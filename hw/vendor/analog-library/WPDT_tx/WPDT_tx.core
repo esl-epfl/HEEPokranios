@@ -1,0 +1,29 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: WPDT_tx.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:wpdt_tx:0.1.0
+description: WPDT model
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:analog_defs
+    files:
+    - Verilog/WPDT_tx.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

@@ -1,0 +1,192 @@
+// VCO Module 
+// Verilog Model
+// Filippo Quadri - 2025
+
+// =============================================================
+//                       VCO Model Summary
+// -------------------------------------------------------------
+// This module simulates a digital Voltage-Controlled Oscillator
+// (VCO) behavior. 
+//
+// ------------------------- Ports -----------------------------
+//   ADC_VIN     : Voltage input (VCO input)
+//   ADC_EN      : Active-low enable signal (conversion only when low)
+//   ADC_REFRESH : Rising edge triggers output refresh
+//   ADC_C_OUT   : 26-bit counter output, accumulates VCO ticks
+//   ADC_F_OUT   : 31-bit frequency output from a LUT (random pick)
+//
+// ----------------------- Parameters --------------------------
+//   FREQUENCY   : ADC clock frequency (Hz) — default is 12.0 Hz
+//   VCO_GAIN    : VCO gain (Hz/LSB) — slope of the transfer function
+//   VCO_OFFSET  : VCO offset (Hz)   — y-intercept of the transfer function
+//
+//  -----------------------  Notes -----------------------------
+//  - The VCO gain and offset are used to convert the digital input
+//    to the approximated frequency of the ring oscillator.
+//  - The file phase_lut.txt is needed for this model to function
+// =============================================================
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+`define FREQUENCY           12
+`define VCO_GAIN            2.1e6
+`define VCO_OFFSET          1.045e6
+
+`define C_OUT_WIDTH         26
+`define F_OUT_WIDTH         31
+
+`define PHASE_LUT_PATH      "phase_lut.txt"
+`define PHASE_LUT_SIZE      62
+
+`define T_RF                30p
+
+module VCO_amodel(ADC_EN, ADC_REFRESH, ADC_C_OUT, ADC_F_OUT, ADC_VIN, ADC_VDD08, ADC_GND);
+
+    // Define the ports
+    input  ADC_EN;
+    input  ADC_REFRESH;
+    input  ADC_VIN;
+    output [`C_OUT_WIDTH-1:0]  ADC_C_OUT;
+    output [`F_OUT_WIDTH-1:0]  ADC_F_OUT;
+    inout  ADC_VDD08;
+    inout  ADC_GND;
+
+    // Create the analog ports
+    voltage ADC_EN;
+    voltage ADC_REFRESH;
+    voltage ADC_VIN;
+    voltage [`C_OUT_WIDTH-1:0]  ADC_C_OUT;
+    voltage [`F_OUT_WIDTH-1:0]  ADC_F_OUT;
+    voltage ADC_VDD08;
+    voltage ADC_GND;
+
+    // Internal variables
+    real ring_oscillator_frequency;
+    integer phase_lut [`PHASE_LUT_SIZE-1:0];
+    
+    integer random_seed;
+    integer random_idx;
+
+    integer ADC_C_OUT_dec;
+    integer ADC_F_OUT_dec;
+    real ADC_C_OUT_bin [`C_OUT_WIDTH-1:0];
+    real ADC_F_OUT_bin [`F_OUT_WIDTH-1:0];
+
+    integer fileID;
+    integer r;
+
+    // Parameters
+    real vth_high = 0.8;
+    real vth_low  = 0.0;
+    real v_th = 0.4;
+    real vh = 0.8;
+    real vl = 0.0;
+
+    real t_rf = `T_RF;
+
+    genvar i;
+
+    analog begin
+    
+        @(initial_step) begin
+            // Initialize the ring oscillator frequency to zero
+            ring_oscillator_frequency = 0;
+            random_seed = 123;
+            
+            // Load the phase LUT from the file
+            fileID = $fopen(`PHASE_LUT_PATH, "r");
+            if (fileID == 0) begin
+                $display("Error: Unable to open file %s", `PHASE_LUT_PATH);
+                $finish;
+            end
+
+            // Fill the LUT
+            $strobe("===============================================");
+            $strobe("Loading phase LUT from file");
+            $strobe("-----------------------------------------------");
+            for (i = 0; i < `PHASE_LUT_SIZE; i = i + 1) begin
+                r = $fscanf(fileID, "%b", phase_lut[i]);
+                if (r != 1) begin
+                    $display("Error: Unable to read from file %s", `PHASE_LUT_PATH);
+                    $finish;
+                end
+
+                $strobe("phase_lut[%0d] = %h", i, phase_lut[i]);
+
+            end
+            $strobe("===============================================");
+            $fclose(fileID);
+            $strobe("VCO initialized");
+
+            vth_high = V(ADC_VDD08) * 0.9;
+            vth_low  = V(ADC_GND) * 0.1;
+            v_th     = V(ADC_VDD08) * 0.5;
+            
+            vh       = V(ADC_VDD08);
+            vl       = V(ADC_GND);
+
+        end
+
+        @(cross(V(ADC_EN) - v_th, -1)) begin
+            // Enable the VCO
+            ring_oscillator_frequency = 0;
+            ADC_C_OUT_dec = 0;
+            ADC_F_OUT_dec = 0;
+
+            for (i = 0; i < `C_OUT_WIDTH; i = i + 1) begin
+                ADC_C_OUT_bin[i] = 0;
+            end
+            for (i = 0; i < `F_OUT_WIDTH; i = i + 1) begin
+                ADC_F_OUT_bin[i] = 0;
+            end
+            
+        end
+
+        @(cross(V(ADC_REFRESH) - v_th, -1)) begin
+            // Refresh the VCO output signals
+            if (V(ADC_EN) > vth_high) begin
+                // Calculate the ring oscillator frequency based on the input voltage
+                ring_oscillator_frequency = `VCO_GAIN * V(ADC_VIN) - `VCO_OFFSET;
+                random_idx = abs($random(random_seed) % `PHASE_LUT_SIZE);
+
+                ADC_C_OUT_dec = ADC_C_OUT_dec + $rtoi(ring_oscillator_frequency / `FREQUENCY);
+                ADC_F_OUT_dec = phase_lut[random_idx];
+
+                $strobe("===============================================");
+                $strobe("ADC_C_OUT_dec = %d", ADC_C_OUT_dec);
+                $strobe("ADC_F_OUT_dec = 0x%h", ADC_F_OUT_dec);
+                $strobe("ring_oscillator_frequency = %f", ring_oscillator_frequency);
+                $strobe("random_idx = %d", random_idx);
+                $strobe("===============================================");
+
+                // Convert the ADC_C_OUT and ADC_F_OUT values to binaryADC_C_OUT_dec
+                for (i = 0; i < `C_OUT_WIDTH; i = i + 1) begin
+                    ADC_C_OUT_bin[i] = (ADC_C_OUT_dec >> i) & 1 ? vh : vl;
+                end
+                for (i = 0; i < `F_OUT_WIDTH; i = i + 1) begin
+                    ADC_F_OUT_bin[i] = (ADC_F_OUT_dec >> i) & 1 ? vh : vl;
+                end
+
+
+
+            end else begin
+                // Disable the VCO
+                ring_oscillator_frequency = 0;
+            end
+        end
+
+        
+        // Set the output signals
+        for (i = 0; i < `C_OUT_WIDTH; i = i + 1) begin
+            V(ADC_C_OUT[i]) <+ transition(ADC_C_OUT_bin[i], 0, t_rf, t_rf);
+        end
+        for (i = 0; i < `F_OUT_WIDTH; i = i + 1) begin
+            V(ADC_F_OUT[i]) <+ transition(ADC_F_OUT_bin[i], 0, t_rf, t_rf);
+        end
+    
+    
+    end
+
+
+endmodule

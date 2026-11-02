@@ -1,0 +1,33 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: WPDT>.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:wpdt:0.1.0
+description: WPDT model
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:analog_defs
+    files:
+    - Verilog/WPDT_wrapper.sv
+    - Verilog/sync.txt: { file_type: user, copyto: wpdt_sync.txt }  # Simply copy the file to the build folder
+    - Verilog/preamble.txt: { file_type: user, copyto: wpdt_preamble.txt }
+    - Verilog/data.txt: { file_type: user, copyto: wpdt_data.txt }
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    - waivers/WPDT.vlt
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

@@ -1,0 +1,148 @@
+// Copyright 2026 EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: VCO_counter.hjson
+// Author: Juan Sapriza
+
+{
+    name: "VCO_counter"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "counter_ovf_raise_bit"
+        desc:     "Bit to look at from the counter to raise the ovf flag "
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "counter_ovf_fall_bit"
+        desc:     "Bit to look at from the counter to lower the ovf flag "
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "count_out"
+        desc:     "VCO ADC count output"
+        swaccess: "rw"
+        hwaccess: "hwo"
+        fields: [
+            { bits: "31:0" }
+        ]
+        }
+        { name:   "count_diff"
+        desc:     "VCO ADC count difference (wrt previous)"
+        swaccess: "rw"
+        hwaccess: "hwo"
+        fields: [
+            { bits: "31:0" }
+        ]
+        }
+        { name:   "integration_cc"
+        desc:     "How long the integration should be. For no duty cycling, this should be equal to integration_cc. This is a bit idx (i.e. 10 will trigger every 1024 clk_i clock cycles)."
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "period_cc"
+        desc:     "The sampling period of the VCO. For no duty cycling, this should be equal to integration_cc. This is a bit idx (i.e. 10 will trigger every 1024 clk_i clock cycles)."
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "settle_cc"
+        desc:     "How long the VCO is on before integration of the counter begins (for duty cycling). This is a bit idx (i.e. 10 will trigger every 1024 clk_i clock cycles)."
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "cooldown_cc"
+        desc:     "How long the VCO is on after integration of the counter ends (for duty cycling). This is a bit idx (i.e. 10 will trigger every 1024 clk_i clock cycles)."
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "count_diff_shift"
+        desc:     "A scaling applied to the counter difference when adjusting duty-cycling on run-time"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "4:0" }
+        ]
+        }
+        { name:   "manual_trigger"
+        desc:     "Trigger manually the refresh signal"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "0:0" }
+        ]
+        }
+        { name:   "enable"
+        desc:     "Enable signals for the VCOs and VCO decoder"
+        swaccess: "rw"
+        hwaccess: "hro"
+        resval: "1"
+        fields: [
+            { bits: "0:0"
+              name: "enable"
+              desc: "Enable the VCOp"
+            }
+        ]
+        }
+                { name:   "manual_refresh_train0"
+        desc:     "Drivers the refresh_o signal"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "0"
+              name: "manual_refresh_train0"
+              desc: "Drivers the refresh_o signal"
+            }
+        ]
+        }
+        { name:   "manual_refresh_train1"
+        desc:     "Drivers the clk of the vco_computation units"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "0"
+              name: "manual_refresh_train1"
+              desc: "Drivers the clk of the vco_computation units"
+            }
+        ]
+        }
+        { name:   "manual_refresh_train2"
+        desc:     "Drivers the refresh_notif_o signal"
+        swaccess: "rw"
+        hwaccess: "hro"
+        fields: [
+            { bits: "0"
+              name: "manual_refresh_train2"
+              desc: "Drivers the refresh_notif_o signal"
+            }
+        ]
+        }
+
+
+        ]
+}

@@ -1,0 +1,29 @@
+CAPI=2:
+
+# Copyright 2026 EPFL contributors
+# Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+#
+# File: heartbeat.core
+# Author: Juan Sapriza
+
+name: epfl:cheep:heartbeat:0.1.0
+description: heartbeat
+
+filesets:
+  rtl:
+    depend:
+    - epfl:cheep:packages
+    files:
+    - rtl/heartbeat.sv
+    file_type: systemVerilogSource
+
+  verilator-waivers:
+    files:
+    file_type: vlt
+
+targets:
+  default: &default
+    filesets:
+    - rtl
+    - tool_verilator ? (verilator-waivers)

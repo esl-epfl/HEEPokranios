@@ -1,0 +1,8 @@
+# Required by CI (to vendor)
+gitpython==3.1.25
+hjson==3.0.2
+black==24.8.0
+# Cheep-specific modules
+numpy==1.22.0
+pandas==2.0.3
+# Remember to leave an empty line at the end

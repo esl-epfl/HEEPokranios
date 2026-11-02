@@ -1,0 +1,33 @@
+// Copyright ${year} EPFL contributors
+// Solderpad Hardware License, Version 2.1, see LICENSE.md for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// File: ${peripheral_name}.hjson
+// Author: ${author}
+
+{
+    name: "${peripheral_name}"
+    clock_primary: "clk_i"
+    reset_primary: "rst_ni"
+    bus_interfaces: [
+        {
+            protocol: "reg_iface"
+            direction: "device"
+        }
+    ]
+    regwidth: "32"
+    registers: [
+        { name:   "Example"
+        desc:     "This is an example register"
+        swaccess: "rw"
+        hwaccess: "hrw"
+        fields: [
+            { bits: "0:0"
+              name: "example"
+              desc: "This is an example register"
+               }
+           ]
+        }
+
+        ]
+}
