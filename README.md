@@ -13,7 +13,7 @@ HEEPokranios is a RISC-V SoC based on the open-source [X-HEEP](https://github.co
 
 As a testing chip, most block inputs/outputs are exposed on pads, to be shorted at PCB level or at wire-bonding time.
 
-<p align="center"><img src="./docs/img/floorplan.svg" width="700"></p>
+<p align="center"><img src="./docs/img/HEEPokranios_diagrams-Tapeout_overlay.svg" width="700"></p>
 
 ## Getting started
 
