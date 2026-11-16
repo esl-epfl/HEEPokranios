@@ -113,6 +113,28 @@ TEST_FLAGS=
 # Dummy target to force software rebuild
 PARAMS = $(PROJECT)
 
+PLL_FREQ ?= 1000000
+
+# ----- UART CONFIGURATION ----- #
+# For this computation check hw/vendor/x-heep/sw/target/sim/x-heep.h
+UART_BAUD := $(shell echo "$(PLL_FREQ) / 20" | bc | xargs printf "%.0f")
+UART_TERMINAL ?= xterm
+GUI_SERIAL ?= 0
+UART_PORT = /dev/serial/by-id/usb-FTDI_Quad_RS232-HS-if02-port0
+PICO_FLAGS = -b $(UART_BAUD) --echo --imap lfcrlf --omap crcrlf --flow n -g uart.log
+XTERM_CMD = xterm -hold -e "picocom $(PICO_FLAGS) $(UART_PORT)"
+GNOME_CMD = gnome-terminal -- bash -c "picocom $(PICO_FLAGS) $(UART_PORT)"
+
+ifeq ($(UART_TERMINAL), gnome)
+    TERM_EXEC = $(GNOME_CMD)
+else
+    TERM_EXEC = $(XTERM_CMD)
+endif
+
+CHEEP_BOARDS ?= hw/vendor/cheep-boards
+
+
+
 # Conda environemnt variables
 REQS_XHEEP 	:= hw/vendor/x-heep/util/python-requirements.txt
 REQS_CHEEP 	:= util/cheep-python-requirements.txt
@@ -409,6 +431,55 @@ vendor-update:
 %/:
 	mkdir -p $@
 
+## @section Executing on ASIC
+
+# Open openOCD
+.PHONY: openocd
+openocd:
+ifeq ($(GUI_SERIAL),1)
+	(openocd -f hw/vendor/x-heep/tb/core-v-mini-mcu-pynq-z2-esl-programmer.cfg </dev/null >.openocd.log 2>&1 & \
+	echo $$! > .openocd.pid )
+else
+	(xterm -hold -e "openocd -f hw/vendor/x-heep/tb/core-v-mini-mcu-pynq-z2-esl-programmer.cfg; exec bash" </dev/null >/dev/null 2>&1 & \
+	echo $$! > .openocd.pid )
+endif
+
+# Open UART
+.PHONY: uart
+uart:
+	@echo "Starting UART terminal using $(UART_TERMINAL)..."
+	($(TERM_EXEC) </dev/null >/dev/null 2>&1 & echo $$! > .uart.pid)
+
+# Open openOCD and uart
+.PHONY: jtag_open
+jtag_open: openocd $(if $(filter 1,$(GUI_SERIAL)),,uart)
+
+# Close the generated terminals
+.PHONY: jtag_close
+jtag_close:
+	@if [ -f .openocd.pid ]; then kill "$$(cat .openocd.pid)" 2>/dev/null || true; fi
+	@if [ -f .uart.pid ]; then kill "$$(cat .uart.pid)" 2>/dev/null || true; fi
+	@rm -f .openocd.pid .uart.pid
+
+# Open GDB
+.PHONY: jtag_run
+jtag_run:
+ifeq ($(GUI_MODE),1)
+	# Load and detach so the GUI can use OpenOCD's Tcl port for live current changes.
+	$(RISCV_XHEEP)/bin/riscv32-unknown-elf-gdb -q -batch sw/build/main.elf -x scripts/asic/gdbGuiInit
+else
+	$(RISCV_XHEEP)/bin/riscv32-unknown-elf-gdb sw/build/main.elf -x scripts/asic/gdbInit || true
+endif
+
+# Compile an app with all the requirements to work for jtag configuration
+.PHONY: jtag_build
+jtag_build:
+	$(MAKE) app BOOT_MODE=jtag LINK_FOLDER=$(LINK_FOLDER) COMPILER_FLAGS="$(COMPILER_FLAGS)"
+
+# Configure PLL
+.PHONY: board_freq
+board_freq:
+	( cd scripts/asic; python3 board_set_pll_freq.py $(PLL_FREQ); cd -)
 
 ## @section Cleaning
 
